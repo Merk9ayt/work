@@ -1,0 +1,23 @@
+@import "constants";
+
+.ae-panel-h-full {
+  height: $h-full;
+
+  .p-panel {
+    height: $h-full;
+    display: flex;
+    flex-direction: column;
+
+    .p-toggleable-content {
+      flex-grow: 1;
+      flex-shrink: 1;
+      overflow: hidden;
+
+      .p-panel-content {
+        height: $h-full !important;
+      }
+    }
+  }
+}
+
+

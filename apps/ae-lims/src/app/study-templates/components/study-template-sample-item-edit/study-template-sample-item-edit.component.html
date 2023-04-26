@@ -1,0 +1,41 @@
+<div class="m-5 pl-2 pr-2">
+  <div class="mb-2">Анализируемый образец</div>
+  <div class="p-inputgroup w-30rem">
+    <input type="text" pInputText [readonly]=true [value]=viewModel.specimenName>
+    <button type="button" pButton icon="ae-icon-ellipsis" (click)="selectSpecimen()"></button>
+  </div>
+  <div class="mt-4 mb-2">Eдиница измерения</div>
+  <div class="p-inputgroup w-30rem">
+    <input type="text" pInputText [readonly]=true [value]=viewModel.unitName>
+    <button type="button" pButton icon="ae-icon-ellipsis" (click)="selectUnit()"></button>
+  </div>
+  <form class="grid h-full mt-4" [formGroup]="viewModel.dataForm">
+    <div>
+      <div class="field col-12 md:col-3">
+        <!--suppress XmlInvalidId -->
+        <label for="minVolume">Минимальное значение</label>
+        <p-inputNumber inputId="minVolume" formControlName="minVolume">
+        </p-inputNumber>
+      </div>
+      <div class="field col-12 md:col-3">
+        <!--suppress XmlInvalidId -->
+        <label for="maxVolume">Максимальное значение</label>
+        <p-inputNumber inputId="maxVolume" formControlName="maxVolume">
+        </p-inputNumber>
+      </div>
+    </div>
+  </form>
+  <div class="flex justify-content-end">
+    <button class="p-button-text p-button-raised mr-4"
+            pButton
+            type="button"
+            label="{{'common:buttons:ok' | i18next }}"
+            [disabled]="!canOk"
+            (click)="ok()"></button>
+    <button class="p-button-text p-button-raised"
+            pButton
+            type="button"
+            label="{{'common:buttons:cancel' | i18next }}"
+            (click)="cancel()"></button>
+  </div>
+</div>

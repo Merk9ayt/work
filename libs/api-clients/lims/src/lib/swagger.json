@@ -1,0 +1,2693 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "LIMS Application",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/v1/laboratories/{id}": {
+      "get": {
+        "tags": [
+          "Laboratory"
+        ],
+        "summary": "Retrieves a batch by its identifier.",
+        "operationId": "LaboratoryGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LaboratoryDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LaboratoryDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LaboratoryDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/laboratories": {
+      "get": {
+        "tags": [
+          "Laboratory"
+        ],
+        "summary": "Retrieves the list of laboratory.",
+        "operationId": "LaboratoryGet",
+        "parameters": [
+          {
+            "name": "Filters",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Sorts",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LaboratoryDtoPagedResultDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LaboratoryDtoPagedResultDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LaboratoryDtoPagedResultDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Laboratory"
+        ],
+        "summary": "Creates new laboratory.",
+        "operationId": "LaboratoryCreate",
+        "requestBody": {
+          "description": "The tag pool content.",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LaboratoryCreateDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LaboratoryCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LaboratoryCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LaboratoryCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LaboratoryDtoPagedResultDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LaboratoryDtoPagedResultDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LaboratoryDtoPagedResultDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/samples/{id}": {
+      "get": {
+        "tags": [
+          "Sample"
+        ],
+        "summary": "Retrieves a batch by its identifier.",
+        "operationId": "SampleGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SampleDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SampleDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SampleDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/studies/{id}": {
+      "get": {
+        "tags": [
+          "Study"
+        ],
+        "summary": "Retrieves a study by its identifier.",
+        "operationId": "StudyGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "study identifier",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/study-orders": {
+      "get": {
+        "tags": [
+          "StudyOrder"
+        ],
+        "summary": "Retrieves the list of study orders matching defined filter conditions.",
+        "operationId": "StudyOrderGet",
+        "parameters": [
+          {
+            "name": "Filters",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Sorts",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyOrderDtoPagedResultDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyOrderDtoPagedResultDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyOrderDtoPagedResultDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/study-orders/{id}": {
+      "get": {
+        "tags": [
+          "StudyOrder"
+        ],
+        "summary": "Retrieves study order by its identifier",
+        "operationId": "StudyOrderGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Study order identifier",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyOrderDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyOrderDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyOrderDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/study-order-schedules": {
+      "get": {
+        "tags": [
+          "StudyOrderSchedule"
+        ],
+        "summary": "Retrieves the list of published study order schedule matching defined filter conditions.",
+        "operationId": "StudyOrderScheduleGet",
+        "parameters": [
+          {
+            "name": "Filters",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Sorts",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyOrderScheduleDtoPagedResultDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyOrderScheduleDtoPagedResultDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyOrderScheduleDtoPagedResultDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "StudyOrderSchedule"
+        ],
+        "summary": "Creates new Study order schedule.",
+        "operationId": "StudyOrderScheduleCreate",
+        "requestBody": {
+          "description": "The Study order schedule content.",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudyOrderScheduleCreateDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudyOrderScheduleCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudyOrderScheduleCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudyOrderScheduleCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/api/v1/study-order-schedules/{id}": {
+      "get": {
+        "tags": [
+          "StudyOrderSchedule"
+        ],
+        "summary": "Retrieves a study order schedule by its identifier.",
+        "operationId": "StudyOrderScheduleGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The study order schedule id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyOrderScheduleDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyOrderScheduleDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyOrderScheduleDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "StudyOrderSchedule"
+        ],
+        "summary": "Updates the specified study order schedule template.",
+        "operationId": "StudyOrderScheduleUpdate",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The study order schedule id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The data patching settings./",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Operation"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Operation"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Operation"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Operation"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "StudyOrderSchedule"
+        ],
+        "summary": "Deletes the specified Study order schedule.",
+        "operationId": "StudyOrderScheduleDelete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The study order schedule id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/study-order-templates": {
+      "get": {
+        "tags": [
+          "StudyOrderTemplate"
+        ],
+        "operationId": "StudyOrderTemplateGet",
+        "parameters": [
+          {
+            "name": "Filters",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Sorts",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyOrderTemplateBaseDataDtoPagedResultDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyOrderTemplateBaseDataDtoPagedResultDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyOrderTemplateBaseDataDtoPagedResultDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "StudyOrderTemplate"
+        ],
+        "operationId": "StudyOrderTemplateCreate",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudyOrderTemplateCreateDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudyOrderTemplateCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudyOrderTemplateCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudyOrderTemplateCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyOrderTemplateCreateResultDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyOrderTemplateCreateResultDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyOrderTemplateCreateResultDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/study-order-templates/{id}": {
+      "get": {
+        "tags": [
+          "StudyOrderTemplate"
+        ],
+        "operationId": "StudyOrderTemplateGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyOrderTemplateDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyOrderTemplateDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyOrderTemplateDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "StudyOrderTemplate"
+        ],
+        "operationId": "StudyOrderTemplateUpdate",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Operation"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Operation"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Operation"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Operation"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/study-order-templates/{id}/published": {
+      "post": {
+        "tags": [
+          "StudyOrderTemplate"
+        ],
+        "operationId": "StudyOrderTemplatePublish",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/study-order-templates/{id}/archived": {
+      "post": {
+        "tags": [
+          "StudyOrderTemplate"
+        ],
+        "operationId": "StudyOrderTemplateArchived",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/study-order-templates/{id}/created-order": {
+      "post": {
+        "tags": [
+          "StudyOrderTemplate"
+        ],
+        "operationId": "StudyOrderTemplateStudyCreate",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "plannedAt",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/api/v1/study-templates": {
+      "get": {
+        "tags": [
+          "StudyTemplate"
+        ],
+        "summary": "Retrieves the list of actual study templates",
+        "operationId": "StudyTemplatesGet",
+        "parameters": [
+          {
+            "name": "Filters",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Sorts",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyTemplateBaseDataDtoPagedResultDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyTemplateBaseDataDtoPagedResultDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyTemplateBaseDataDtoPagedResultDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "StudyTemplate"
+        ],
+        "summary": "Creates new Study template.",
+        "operationId": "StudyTemplateCreate",
+        "requestBody": {
+          "description": "The Study template content.",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudyTemplateCreateDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudyTemplateCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudyTemplateCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudyTemplateCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyTemplateCreateResultDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyTemplateCreateResultDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyTemplateCreateResultDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/study-templates/{id}": {
+      "get": {
+        "tags": [
+          "StudyTemplate"
+        ],
+        "summary": "Retrieves the study template by id",
+        "operationId": "StudyTemplateGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The study template id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyTemplateDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyTemplateDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyTemplateDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "StudyTemplate"
+        ],
+        "summary": "Updates the specified study template.",
+        "operationId": "StudyTemplateUpdate",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The study template id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The data patching settings./",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Operation"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Operation"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Operation"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Operation"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/study-templates/{id}/published": {
+      "post": {
+        "tags": [
+          "StudyTemplate"
+        ],
+        "summary": "Publish the specified study template.",
+        "operationId": "StudyTemplatePublish",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The study template code",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/study-templates/{id}/archived": {
+      "post": {
+        "tags": [
+          "StudyTemplate"
+        ],
+        "summary": "Archive the specified study template.",
+        "operationId": "StudyTemplateArchived",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The study template id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "DocumentStatus": {
+        "enum": [
+          "Draft",
+          "Published",
+          "Outdated",
+          "Archived"
+        ],
+        "type": "string"
+      },
+      "ErrorDto": {
+        "required": [
+          "instance",
+          "status",
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "instance": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "title": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "titleKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "descriptionKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "stackTrace": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": { },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LaboratoryCreateDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Laboratory name",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "description": "Laboratory description",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/LaboratoryStatus"
+          }
+        },
+        "additionalProperties": false,
+        "description": "DTO-model for laboratory creation"
+      },
+      "LaboratoryDto": {
+        "required": [
+          "createdAt",
+          "createdBy",
+          "id",
+          "modifiedAt",
+          "modifiedBy"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Laboratory name",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "description": "Laboratory description",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/LaboratoryStatus"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "modifiedBy": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false,
+        "description": "DTO-model for laboratory"
+      },
+      "LaboratoryDtoPagedResultDto": {
+        "required": [
+          "entries"
+        ],
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "entries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LaboratoryDto"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "LaboratoryStatus": {
+        "enum": [
+          "Deactivated",
+          "Active"
+        ],
+        "type": "string"
+      },
+      "Operation": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "nullable": true
+          },
+          "path": {
+            "type": "string",
+            "nullable": true
+          },
+          "op": {
+            "type": "string",
+            "nullable": true
+          },
+          "from": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ParameterDto": {
+        "required": [
+          "id",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PrecisionDto": {
+        "required": [
+          "id",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SampleDto": {
+        "required": [
+          "id",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": ""
+      },
+      "SampleSourceDto": {
+        "required": [
+          "id",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ScheduleDefinition": {
+        "type": "object",
+        "properties": {
+          "begin": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "end": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "canBeRequested": {
+            "type": "boolean"
+          },
+          "periodType": {
+            "$ref": "#/components/schemas/SchedulePeriodType"
+          },
+          "timesInPeriod": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "interval": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SchedulePeriodType": {
+        "enum": [
+          "Hourly",
+          "Daily",
+          "Weekly",
+          "Monthly"
+        ],
+        "type": "string"
+      },
+      "ScheduleStatus": {
+        "enum": [
+          "Inactive",
+          "Active"
+        ],
+        "type": "string"
+      },
+      "SpecimenDto": {
+        "required": [
+          "id",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "StudyDto": {
+        "required": [
+          "createdAt",
+          "createdBy",
+          "id",
+          "modifiedAt",
+          "modifiedBy"
+        ],
+        "type": "object",
+        "properties": {
+          "studyOrderId": {
+            "type": "string",
+            "description": "Link to study order",
+            "format": "uuid"
+          },
+          "studyTemplateId": {
+            "type": "string",
+            "description": "Link to study template",
+            "format": "uuid"
+          },
+          "laboratory": {
+            "$ref": "#/components/schemas/LaboratoryDto"
+          },
+          "plannedAt": {
+            "type": "string",
+            "description": "Study planned date",
+            "format": "date-time"
+          },
+          "startedAt": {
+            "type": "string",
+            "description": "Study started date",
+            "format": "date-time",
+            "nullable": true
+          },
+          "completedAt": {
+            "type": "string",
+            "description": "Study completed date",
+            "format": "date-time",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/StudyStatus"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "modifiedBy": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false,
+        "description": "DTO-model for study"
+      },
+      "StudyOrderDto": {
+        "required": [
+          "createdAt",
+          "createdBy",
+          "id",
+          "modifiedAt",
+          "modifiedBy"
+        ],
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "modifiedBy": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false,
+        "description": "DTO-model for study order"
+      },
+      "StudyOrderDtoPagedResultDto": {
+        "required": [
+          "entries"
+        ],
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "entries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StudyOrderDto"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "StudyOrderScheduleAction": {
+        "type": "object",
+        "properties": {
+          "template": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "StudyOrderScheduleCreateDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Study order schedule name",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "description": "Study order schedule description",
+            "nullable": true
+          },
+          "scheduleActions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StudyOrderScheduleAction"
+            },
+            "description": "Templates, included in schedule",
+            "nullable": true
+          },
+          "schedule": {
+            "$ref": "#/components/schemas/ScheduleDefinition"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ScheduleStatus"
+          }
+        },
+        "additionalProperties": false,
+        "description": "DTO-model for study order schedule creation"
+      },
+      "StudyOrderScheduleDto": {
+        "required": [
+          "createdAt",
+          "createdBy",
+          "id",
+          "modifiedAt",
+          "modifiedBy"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Study order schedule name",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "description": "Study order schedule description",
+            "nullable": true
+          },
+          "scheduleActions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StudyOrderScheduleAction"
+            },
+            "description": "Templates, included in schedule",
+            "nullable": true
+          },
+          "schedule": {
+            "$ref": "#/components/schemas/ScheduleDefinition"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ScheduleStatus"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "modifiedBy": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false,
+        "description": "DTO-model for study order schedule"
+      },
+      "StudyOrderScheduleDtoPagedResultDto": {
+        "required": [
+          "entries"
+        ],
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "entries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StudyOrderScheduleDto"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "StudyOrderTemplateBaseDataDto": {
+        "required": [
+          "code",
+          "createdAt",
+          "createdBy",
+          "id",
+          "modifiedAt",
+          "modifiedBy",
+          "name",
+          "revision",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "revision": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/DocumentStatus"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "modifiedBy": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "StudyOrderTemplateBaseDataDtoPagedResultDto": {
+        "required": [
+          "entries"
+        ],
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "entries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StudyOrderTemplateBaseDataDto"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "StudyOrderTemplateCreateDto": {
+        "required": [
+          "name",
+          "studies"
+        ],
+        "type": "object",
+        "properties": {
+          "parentId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "revision": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "studies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StudyOrderTemplateOrderDefinitionDto"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "StudyOrderTemplateCreateResultDto": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "StudyOrderTemplateDto": {
+        "required": [
+          "code",
+          "createdAt",
+          "createdBy",
+          "id",
+          "modifiedAt",
+          "modifiedBy",
+          "name",
+          "revision",
+          "status",
+          "studies"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "revision": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "studies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StudyOrderTemplateOrderDefinitionDto"
+            }
+          },
+          "status": {
+            "$ref": "#/components/schemas/DocumentStatus"
+          },
+          "parentId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "modifiedBy": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "StudyOrderTemplateOrderDefinitionDto": {
+        "required": [
+          "sampleSources",
+          "studyResults",
+          "studyTemplate"
+        ],
+        "type": "object",
+        "properties": {
+          "studyTemplate": {
+            "$ref": "#/components/schemas/StudyTemplateBaseDataDto"
+          },
+          "sampleSources": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StudyOrderTemplateSampleSourceDto"
+            }
+          },
+          "studyResults": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StudyOrderTemplateResultDto"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "StudyOrderTemplateResultDto": {
+        "required": [
+          "maxPermissibleValue",
+          "minPermissibleValue",
+          "parameter",
+          "precision",
+          "specimen",
+          "unit"
+        ],
+        "type": "object",
+        "properties": {
+          "parameter": {
+            "$ref": "#/components/schemas/ParameterDto"
+          },
+          "specimen": {
+            "$ref": "#/components/schemas/SpecimenDto"
+          },
+          "unit": {
+            "$ref": "#/components/schemas/UnitDto"
+          },
+          "minPermissibleValue": {
+            "type": "number",
+            "format": "double"
+          },
+          "maxPermissibleValue": {
+            "type": "number",
+            "format": "double"
+          },
+          "precision": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "StudyOrderTemplateSampleSourceDto": {
+        "required": [
+          "canCombineSample",
+          "sampleSource",
+          "specimen"
+        ],
+        "type": "object",
+        "properties": {
+          "sampleSource": {
+            "$ref": "#/components/schemas/SampleSourceDto"
+          },
+          "specimen": {
+            "$ref": "#/components/schemas/SpecimenDto"
+          },
+          "canCombineSample": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "StudyStatus": {
+        "enum": [
+          "Planned",
+          "Started",
+          "Completed",
+          "Canceled"
+        ],
+        "type": "string"
+      },
+      "StudyTemplateBaseDataDto": {
+        "required": [
+          "createdAt",
+          "createdBy",
+          "id",
+          "modifiedAt",
+          "modifiedBy",
+          "name",
+          "revision",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "revision": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/DocumentStatus"
+          },
+          "parentId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "modifiedBy": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "StudyTemplateBaseDataDtoPagedResultDto": {
+        "required": [
+          "entries"
+        ],
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "entries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StudyTemplateBaseDataDto"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "StudyTemplateCreateDto": {
+        "required": [
+          "name",
+          "parameters",
+          "results",
+          "samples"
+        ],
+        "type": "object",
+        "properties": {
+          "parentId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "revision": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "officialName": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "parameters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StudyTemplateParameterDto"
+            }
+          },
+          "samples": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StudyTemplateSampleDto"
+            }
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StudyTemplateResultDefinitionDto"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "StudyTemplateCreateResultDto": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "StudyTemplateDto": {
+        "required": [
+          "createdAt",
+          "createdBy",
+          "id",
+          "modifiedAt",
+          "modifiedBy",
+          "name",
+          "parameters",
+          "results",
+          "samples",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "revision": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "officialName": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "parameters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StudyTemplateParameterDto"
+            }
+          },
+          "samples": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StudyTemplateSampleDto"
+            }
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StudyTemplateResultDefinitionDto"
+            }
+          },
+          "status": {
+            "$ref": "#/components/schemas/DocumentStatus"
+          },
+          "parentId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "modifiedBy": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "StudyTemplateParameterDto": {
+        "required": [
+          "name",
+          "parameter",
+          "specimen"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "parameter": {
+            "$ref": "#/components/schemas/ParameterDto"
+          },
+          "specimen": {
+            "$ref": "#/components/schemas/SpecimenDto"
+          },
+          "unit": {
+            "$ref": "#/components/schemas/UnitDto"
+          },
+          "defaultValue": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "StudyTemplateResultDefinitionDto": {
+        "required": [
+          "name",
+          "parameter",
+          "precisions",
+          "specimen"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "parameter": {
+            "$ref": "#/components/schemas/ParameterDto"
+          },
+          "specimen": {
+            "$ref": "#/components/schemas/SpecimenDto"
+          },
+          "unit": {
+            "$ref": "#/components/schemas/UnitDto"
+          },
+          "defaultValue": {
+            "type": "string",
+            "nullable": true
+          },
+          "minValue": {
+            "type": "number",
+            "format": "double"
+          },
+          "maxValue": {
+            "type": "number",
+            "format": "double"
+          },
+          "precisions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StudyTemplateResultPrecisionDto"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "StudyTemplateResultPrecisionDto": {
+        "required": [
+          "maxValue",
+          "minValue",
+          "precision",
+          "unit",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "precision": {
+            "$ref": "#/components/schemas/PrecisionDto"
+          },
+          "unit": {
+            "$ref": "#/components/schemas/UnitDto"
+          },
+          "minValue": {
+            "type": "number",
+            "format": "double"
+          },
+          "maxValue": {
+            "type": "number",
+            "format": "double"
+          },
+          "value": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "StudyTemplateSampleDto": {
+        "required": [
+          "specimen"
+        ],
+        "type": "object",
+        "properties": {
+          "specimen": {
+            "$ref": "#/components/schemas/SpecimenDto"
+          },
+          "unit": {
+            "$ref": "#/components/schemas/UnitDto"
+          },
+          "minVolume": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "maxVolume": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UnitDto": {
+        "required": [
+          "id",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "oauth2": {
+        "type": "oauth2",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "http://10.100.79.41:8080/realms/ae-labs/protocol/openid-connect/auth",
+            "scopes": { }
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "oauth2": [ ]
+    }
+  ],
+  "tags": [
+    {
+      "name": "Laboratory",
+      "description": "The laboratory management controller."
+    },
+    {
+      "name": "Sample",
+      "description": "The sample management controller."
+    },
+    {
+      "name": "Study",
+      "description": "The study management controller."
+    },
+    {
+      "name": "StudyOrder",
+      "description": "The study order management controller."
+    },
+    {
+      "name": "StudyOrderSchedule",
+      "description": "The study order schedule management controller."
+    },
+    {
+      "name": "StudyOrderTemplate",
+      "description": "The study order template management controller."
+    },
+    {
+      "name": "StudyTemplate",
+      "description": "The study order management controller."
+    }
+  ]
+}

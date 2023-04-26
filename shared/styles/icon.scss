@@ -1,0 +1,71 @@
+@import "icon-bl";
+
+.ae-icon-close {
+  @extend .fa;
+  @extend .fa-xmark;
+}
+
+.ae-icon-edit {
+  @extend .fa;
+  @extend .fa-pen-to-square;
+}
+
+.ae-icon-view {
+  @extend .fa;
+  @extend .fa-magnifying-glass;
+}
+
+.ae-icon-delete {
+  @extend .fa;
+  @extend .fa-trash;
+}
+
+.ae-icon-save {
+  @extend .fa;
+  @extend .fa-floppy-disk;
+}
+
+.ae-icon-ok {
+  @extend .fa;
+  @extend .fa-check;
+}
+
+.ae-icon-exclamation-triangle {
+  @extend .fa;
+  @extend .fa-triangle-exclamation;
+}
+
+.ae-icon-dropdown {
+  @extend .fa;
+  @extend .fa-chevron-down;
+}
+
+.ae-icon-new {
+  @extend .fa;
+  @extend .fa-plus;
+}
+
+.ae-icon-copy {
+  @extend .fa;
+  @extend .fa-share;
+}
+
+.ae-icon-th-large {
+  @extend .fa;
+  @extend .fa-table-cells-large;
+}
+
+.ae-icon-bars {
+  @extend .fa;
+  @extend .fa-bars;
+}
+
+.ae-icon-ellipsis {
+  @extend .fa;
+  @extend .fa-ellipsis;
+}
+
+.ae-icon-magnifying-glass {
+  @extend .fa;
+  @extend .fa-magnifying-glass;
+}

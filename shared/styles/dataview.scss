@@ -1,0 +1,19 @@
+.ae-dataview-h-full {
+  height: $h-full;
+  display: block;
+  overflow-y: hidden;
+
+  .p-dataview {
+    height: $h-full;
+    display: flex;
+    flex-direction: column;
+
+    .p-dataview-content {
+      flex-grow: 1;
+      flex-shrink: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      height: $h-full;
+    }
+  }
+}

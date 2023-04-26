@@ -1,0 +1,9 @@
+{
+  "menu": {
+    "subject": "Subjects",
+    "specimens": "Specimens",
+    "results": "Study results"
+  },
+  "typeResult": "Type of research results",
+  "objectResult": "Result object"
+}

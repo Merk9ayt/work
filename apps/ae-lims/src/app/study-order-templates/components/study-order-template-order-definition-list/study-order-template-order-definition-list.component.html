@@ -1,0 +1,24 @@
+<div class="flex flex-column h-full overflow-y-hidden">
+  <div class="overflow-y-auto ">
+    <p-dataView [value]="viewModel.items"
+                [paginator]="false"
+                layout="list">
+      <ng-template let-studyResult pTemplate="listItem">
+        <ae-lims-study-order-template-order-definition-list-item class="w-full m-1"
+                                                                 [viewModel]="studyResult"
+                                                                 [formMode]="formMode"
+                                                                 (deleted)="delete($event)"/>
+      </ng-template>
+    </p-dataView>
+  </div>
+  <div class="flex justify-content-end p-2">
+    <div [hidden]="!canAdd">
+      <button class="p-button-rounded mr-4"
+              pButton
+              pRipple
+              type="button"
+              icon="ae-icon-new"
+              (click)="add()"></button>
+    </div>
+  </div>
+</div>

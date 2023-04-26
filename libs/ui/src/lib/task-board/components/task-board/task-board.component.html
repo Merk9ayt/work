@@ -1,0 +1,11 @@
+<div class="flex flex-row flex-nowrap gap-5 h-full">
+  <ng-container *ngFor="let taskList of columns">
+    <ae-task-list pDroppable="tasks"
+                  dropEffect="move"
+                  (onDrop)="onDrop($event, taskList.id)"
+                  (dragStarted)="onDragStarted($event)"
+                  (dragFinished)="onDragFinished()"
+                  [model]="taskList"
+                  [style]="{width: getColumnWidth(), 'min-width': '15rem'}"></ae-task-list>
+  </ng-container>
+</div>

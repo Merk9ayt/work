@@ -1,0 +1,25 @@
+<ng-container *ngIf="userLoggedIn">
+  <ng-container *ngIf="userAvatar;then image_avatar else text_avatar"></ng-container>
+  <ng-template #image_avatar>
+    <p-avatar
+      [image]="userAvatar ?? ''"
+      size="large"
+      shape="circle"
+      [pTooltip]="userName ?? ''"
+      tooltipPosition="bottom"
+      (click)="menu.toggle($event)">
+    </p-avatar>
+  </ng-template>
+  <ng-template #text_avatar>
+    <p-avatar
+      [label]="userLabel ?? ''"
+      size="large"
+      shape="circle"
+      [pTooltip]="userName ?? ''"
+      tooltipPosition="bottom"
+      (click)="menu.toggle($event)">
+    </p-avatar>
+  </ng-template>
+</ng-container>
+<p-menu #menu [popup]="true" [model]="userActions"></p-menu>
+

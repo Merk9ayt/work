@@ -1,0 +1,64 @@
+<p-panel class="ae-panel-h-full">
+  <ng-template pTemplate="header">
+    <div class="flex w-full">
+      <div class="w-6rem text-overflow-ellipsis white-space-nowrap overflow-hidden">{{template?.code}}</div>
+      <div class="flex flex-grow-1 justify-content-between">
+        <div class="ae-header">{{template?.name}}</div>
+        <div class="ae-header">{{'details.revision'| i18next}}: {{template?.revision}}</div>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="icons">
+    <div class="flex justify-content-end" style="min-width: 5rem">
+      <button *ngIf="canEdit" pButton class="p-panel-header-icon p-link" [title]="'buttons.edit' | i18next"
+              (click)="toEdit()">
+        <span class="ae-icon-edit"></span>
+      </button>
+      <button pButton class="p-panel-header-icon p-link" [title]="'details.view.editInNewVersion' | i18next"
+              (click)="toCreate()">
+        <span class="ae-icon-new"></span>
+      </button>
+      <button *ngIf="canDelete" pButton class="p-panel-header-icon p-link" [title]="'details.view.archive' | i18next"
+              (click)="delete()">
+        <span class="ae-icon-delete"></span>
+      </button>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="content">
+    <p-tabView class="h-full" styleClass="ae-tabView-h-full">
+      <p-tabPanel header="{{'common:basic' | i18next}}">
+        <div class="grid ">
+          <div class="col">
+            <p-card [header]="'officialName' | i18next" styleClass="h-12rem">
+              <div>{{(template?.name) ?? ''}}</div>
+            </p-card>
+          </div>
+          <p-divider layout="vertical"></p-divider>
+          <div class="col">
+            <p-card [header]="'common:description' | i18next" styleClass="h-full h-12rem">
+              <div>{{(template?.description) ?? ''}}</div>
+            </p-card>
+          </div>
+        </div>
+      </p-tabPanel>
+      <p-tabPanel header="{{'common:parameters' | i18next}}" class="h-full">
+        <ae-lims-study-template-sample-list [viewModel]="viewModel.samplesViewModel"/>
+      </p-tabPanel>
+      <p-tabPanel header="{{'common:samples' | i18next}}" class="h-full">
+        <ae-lims-study-template-sample-list [viewModel]="viewModel.samplesViewModel"/>
+      </p-tabPanel>
+      <p-tabPanel header="{{'common:results' | i18next}}">
+        <ae-lims-study-template-result-definition-list
+          [viewModel]="viewModel.resultsViewModel"
+          [formMode]="formMode"
+        ></ae-lims-study-template-result-definition-list>
+      </p-tabPanel>
+      <p-tabPanel header="{{'common:research' | i18next}}">
+      </p-tabPanel>
+      <p-tabPanel header="{{'common:equipment' | i18next}}">
+      </p-tabPanel>
+      <p-tabPanel header="{{'common:materials' | i18next}}">
+      </p-tabPanel>
+    </p-tabView>
+  </ng-template>
+</p-panel>

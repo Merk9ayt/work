@@ -1,0 +1,52 @@
+.ae-layout-header {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  transition: width 0.2s;
+  height: 3.5rem;
+  background-color: var(--surface-ground);
+  box-shadow: 0 24px 64px -2px rgb(0 0 0 / 2%), 0 6px 16px -2px rgb(0 0 0 / 6%), 0 2px 6px -2px rgb(0 0 0 / 8%);
+
+  .ae-layout-header-wrapper {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    .ae-layout-header-left {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      width: 16.5rem;
+      padding: .75rem 1rem;
+
+      &.ae-layout-header-left-compact {
+        width: 4rem;
+      }
+
+      .ae-layout-header-logo {
+        cursor: pointer;
+        outline: none;
+      }
+    }
+
+    .ae-layout-header-right {
+      height: 100%;
+      flex-grow: 1;
+      padding: 12px 32px 12px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .ae-layout-header-actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex-grow: 1;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+    }
+  }
+}

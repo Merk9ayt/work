@@ -1,0 +1,21 @@
+<div class="flex flex-column h-full overflow-y-hidden">
+  <div class="overflow-y-auto ">
+    <p-dataView [value]="items"
+                [paginator]="false"
+                layout="list">
+      <ng-template let-specimen pTemplate="listItem">
+        <ae-sr-sample-source-specimen-item-view class="w-full mr-5"
+                                                [specimenItem]="specimen"/>
+      </ng-template>
+    </p-dataView>
+  </div>
+  <div class="flex justify-content-end p-2">
+    <div [hidden]="!canAdd">
+      <button class="p-button-rounded mr-4"
+              pButton
+              pRipple
+              type="button"
+              icon="ae-icon-new"></button>
+    </div>
+  </div>
+</div>

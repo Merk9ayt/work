@@ -1,0 +1,11 @@
+<p-splitter class="h-full w-full" panelStyleClass="h-full" styleClass="h-full border-none" [panelSizes]="[30,70]">
+  <ng-template pTemplate>
+    <ae-lims-sample-sources-list [sampleSources$]="sampleSources$"
+                                 (sampleSourceSelected)="sampleSourceSelect($event)"
+                                 (sampleSourceCreate)="sampleSourceCreate($event)"/>
+  </ng-template>
+  <ng-template pTemplate>
+    <router-outlet></router-outlet>
+  </ng-template>
+</p-splitter>
+

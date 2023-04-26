@@ -1,0 +1,33 @@
+<div class="flex border-bottom-1 surface-border surface-overlay w-full mt-1">
+  <div class="flex-grow-1">
+    <div class="flex ae-header">
+      <div class="ae-header w-4rem col-fixed">Min</div>
+      <div class="ae-header w-4rem col-fixed">Max</div>
+      <div class="ae-header col">{{viewModel.data.precision.name}}</div>
+
+    </div>
+    <div class="flex">
+      <div class="ae-header w-4rem col-fixed">{{viewModel.data.minValue}}</div>
+      <div class="ae-header w-4rem col-fixed">{{viewModel.data.maxValue}}</div>
+      <div class="ae-header col">{{value}}</div>
+    </div>
+  </div>
+  <div class="m-0  col-fixed">
+    <div class="flex justify-content-end">
+      <div [hidden]=!canEdit>
+        <button class="p-button-rounded p-button-text w-2rem h-2rem m-1 p-button-plain"
+                type="button"
+                pButton
+                (click)="edit()"
+                icon="ae-icon-edit"></button>
+      </div>
+      <div [hidden]="!canDelete">
+        <button class="p-button-rounded p-button-text w-2rem h-2rem m-1 p-button-plain"
+                type="button"
+                pButton
+                (click)="delete()"
+                icon="ae-icon-delete"></button>
+      </div>
+    </div>
+  </div>
+</div>

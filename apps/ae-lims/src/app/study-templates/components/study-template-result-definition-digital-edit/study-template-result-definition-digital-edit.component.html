@@ -1,0 +1,34 @@
+<div class="flex flex-column h-full">
+  <form class="" [formGroup]="viewModel.dataForm">
+    <div class="flex w-full overflow-hidden mr-2">
+      <div class="ae-input-field-block">
+        <!--suppress XmlInvalidId -->
+        <label for="defaultValue">{{'defaultValue'| i18next}}</label>
+        <p-inputNumber inputId="defaultValue" formControlName="defaultValue">
+        </p-inputNumber>
+      </div>
+      <p-divider layout="vertical"></p-divider>
+      <div class="ae-input-field-block">
+        <!--suppress XmlInvalidId -->
+        <label for="minValue">{{'minValue' | i18next}}</label>
+        <p-inputNumber inputId="minValue" formControlName="minValue">
+        </p-inputNumber>
+      </div>
+      <p-divider layout="vertical"></p-divider>
+      <div class="ae-input-field-block">
+        <!--suppress XmlInvalidId -->
+        <label for="maxVolume">{{'maxValue' | i18next}}</label>
+        <p-inputNumber inputId="maxValue" formControlName="maxValue">
+        </p-inputNumber>
+      </div>
+    </div>
+  </form>
+  <p-card header="{{'metrology' | i18next}}" class="flex-grow-1 ae-card-h-full-p0 ">
+    <!--    <div class="overflow-y-hidden">-->
+    <ae-lims-study-template-result-precision-list
+      [viewModel]="viewModel.precisionListViewModel"
+      [formMode]="formMode">
+    </ae-lims-study-template-result-precision-list>
+    <!--    </div>-->
+  </p-card>
+</div>

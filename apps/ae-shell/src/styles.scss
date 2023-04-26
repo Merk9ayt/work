@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "shared/styles/styles.scss";
+@import "variables";
+
+body {
+  font-family: var(--font-family);
+  color: var(--text-color);
+  background-color: var(--surface-ground);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+}

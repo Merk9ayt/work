@@ -1,0 +1,43 @@
+.ae-card-p0 {
+  .p-card-content {
+    padding: 0;
+  }
+}
+
+.ae-card-h-full {
+  //height: $h-full;
+  overflow-y: hidden;
+
+  .p-card {
+    height: $h-full;
+
+    .p-card-body {
+      height: $h-full;
+      display: flex;
+      flex-direction: column;
+
+      .p-card-content {
+        flex-grow: 1;
+        flex-shrink: 1;
+        overflow: hidden;
+        height: $h-full !important;
+      }
+    }
+  }
+}
+
+.ae-card-h-full-p0 {
+  @extend .ae-card-h-full;
+
+  .p-card {
+    padding: 0px;
+
+    .p-card-body {
+      padding: 0px;
+
+      .p-card-content {
+        padding: 0px;
+      }
+    }
+  }
+}

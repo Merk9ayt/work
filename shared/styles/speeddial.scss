@@ -1,0 +1,19 @@
+.ae-card-speeddial {
+  position: relative;
+  right: 0;
+
+  .p-speeddial-button.p-button.p-button-icon-only {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .p-speeddial-action {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .p-speeddial-direction-left {
+    right: 0;
+    top: 0;
+  }
+}

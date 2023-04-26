@@ -1,0 +1,31 @@
+<p-panel class="ae-panel-h-full">
+  <ng-template pTemplate="header">
+    <div class="ae-header">{{sampleSource.name}}</div>
+  </ng-template>
+  <ng-template pTemplate="icons">
+    <button *ngIf="canEdit" pButton class="p-panel-header-icon p-link" [title]="'buttons.edit' | i18next"
+            (click)="toEdit()">
+      <span class="ae-icon-edit"></span>
+    </button>
+    <button *ngIf="canDelete" pButton class="p-panel-header-icon p-link" [title]="'details.view.archive' | i18next"
+            (click)="delete()">
+      <span class="ae-icon-delete"></span>
+    </button>
+
+  </ng-template>
+  <ng-template pTemplate="content">
+    <div class="grid ">
+      <div class="col">
+        <p-card [header]="'description' | i18next" styleClass="h-full h-12rem">
+          <div>{{sampleSource.description}}</div>
+        </p-card>
+      </div>
+      <p-divider layout="vertical"></p-divider>
+      <div class="col">
+        <p-card header="Образцы" styleClass="h-full h-12rem">
+          <ae-sr-sample-source-specimens-list [formMode]="formMode" [items]="sampleSource.specimens"/>
+        </p-card>
+      </div>
+    </div>
+  </ng-template>
+</p-panel>

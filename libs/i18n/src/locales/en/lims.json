@@ -1,0 +1,12 @@
+{
+  "menu": {
+    "lims": "LIMS",
+    "methodology": "Methodologies",
+    "studyOrderTemplate": "Study order templates"
+  },
+  "minVolume": "Min Volume",
+  "maxVolume": "Max Volume",
+  "minValue": "Min Value",
+  "maxValue": "Max Value",
+  "metrology": "Metrology"
+}

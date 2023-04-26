@@ -1,0 +1,25 @@
+<div class="flex flex-column h-full">
+  <div class="overflow-y-auto">
+    <p-dataView [value]="viewModel.items"
+                [paginator]="false"
+                layout="list">
+      <ng-template let-sample pTemplate="listItem">
+        <ae-lims-study-template-sample-list-item-view class="w-full mr-5"
+                                                      [viewModel]="sample"
+                                                      [formMode]="formMode"
+                                                      (deleted)="delete($event)"/>
+      </ng-template>
+    </p-dataView>
+  </div>
+  <div class="flex justify-content-end p-2">
+    <div [hidden]="!canAdd">
+      <button class="p-button-rounded mr-4"
+              pButton
+              pRipple
+              type="button"
+              icon="ae-icon-new"
+
+              (click)="add()"></button>
+    </div>
+  </div>
+</div>

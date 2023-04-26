@@ -1,0 +1,69 @@
+<div class="flex flex-column h-full">
+  <p-splitter class="flex-grow-1 ae-splitter-h-w-full" styleClass=" border-none"
+              [panelSizes]="[30,70]">
+    <ng-template pTemplate>
+      <div class="w-full">
+        <form class="" [formGroup]="viewModel.dataForm">
+          <div class="p-float-label mt-4">
+            <input class="w-full" id="name-input" type="text" pInputText formControlName="name">
+            <label for="name-input">{{'name' | i18next }}</label>
+          </div>
+          <div class="p-float-label mt-4 ">
+            <textarea id="description-input" rows="5" class="ae-textarea-fixed-w-max" pInputTextarea
+                      formControlName="description"></textarea>
+            <label for="description-input">{{'description' | i18next }}</label>
+
+          </div>
+        </form>
+        <div class="mt-2">
+          <div>{{'typeResult' | i18next }}</div>
+          <div class="p-inputgroup ">
+            <input type="text" pInputText [readonly]=true [value]=viewModel.parameterName>
+            <button type="button" pButton icon="ae-icon-ellipsis" (click)="selectResultType()"></button>
+          </div>
+        </div>
+        <div class="mt-2">
+          <div>{{'objectResult' | i18next }}</div>
+          <div class="p-inputgroup ">
+            <input type="text" pInputText [readonly]=true [value]=viewModel.specimenName>
+            <button type="button" pButton icon="ae-icon-ellipsis" (click)="selectSpecimen()"></button>
+          </div>
+        </div>
+
+        <div class="mt-2">
+          <div>{{'unit' | i18next }}</div>
+          <div class="p-inputgroup ">
+            <input type="text" pInputText [readonly]=true [value]=viewModel.unitName>
+            <button type="button" pButton icon="ae-icon-ellipsis" (click)="selectUnit()"></button>
+          </div>
+        </div>
+        <!--        <div class="mt-2">-->
+        <!--          <p-radioButton class="mr-2" name="resultType" value="Digital" label="Цифровой"-->
+        <!--                         [(ngModel)]="viewModel.resultType"></p-radioButton>-->
+        <!--          <p-radioButton name="resultType" value="Predefined" label="Предопределенный"-->
+        <!--                         [(ngModel)]="viewModel.resultType"></p-radioButton>-->
+        <!--        </div>-->
+      </div>
+    </ng-template>
+    <ng-template pTemplate>
+      <div class="w-full">
+        <ae-lims-study-result-definition-digital-edit
+          [viewModel]="viewModel">
+        </ae-lims-study-result-definition-digital-edit>
+      </div>
+    </ng-template>
+  </p-splitter>
+  <div class="flex justify-content-end p-2">
+    <button class="p-button-text p-button-raised mr-4"
+            pButton
+            type="button"
+            label="{{'common:buttons:ok' | i18next }}"
+            [disabled]="!canOk"
+            (click)="ok()"></button>
+    <button class="p-button-text p-button-raised"
+            pButton
+            type="button"
+            label="{{'common:buttons:cancel' | i18next }}"
+            (click)="cancel()"></button>
+  </div>
+</div>

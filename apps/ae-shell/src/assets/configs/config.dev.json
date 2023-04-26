@@ -1,0 +1,218 @@
+{
+  "applications": [
+    {
+      "displayName": "Домой",
+      "displayNameKey": "home",
+      "icon": [
+        "fa",
+        "fa-home"
+      ],
+      "routePath": "/"
+    },
+    {
+      "displayName": "Лабораторная система",
+      "displayNameKey": "lims:menu.lims",
+      "i18nextNamespaces": [
+        "lims"
+      ],
+      "icon": [
+        "fa",
+        "fa-flask-vial"
+      ],
+      "permissions": [
+        "aeLims"
+      ],
+      "children": [
+        {
+          "displayName": "Методики",
+          "displayNameKey": "lims:menu.methodology",
+          "icon": [
+            "fa",
+            "fa-flask"
+          ],
+          "routePath": "study-templates",
+          "permissions": [
+            "aeLimsStudyTemplates"
+          ],
+          "options": {
+            "type": "remote",
+            "module": "StudyTemplates",
+            "url": "http://localhost:4201/remoteEntry.js"
+          }
+        },
+        {
+          "displayName": "Шаблоны исследований",
+          "displayNameKey": "lims:menu.studyOrderTemplate",
+          "icon": [
+            "fa",
+            "fa-flask-vial"
+          ],
+          "routePath": "study-order-templates",
+          "permissions": [
+            "aeLimsStudyOrderTemplates"
+          ],
+          "options": {
+            "type": "remote",
+            "module": "StudyOrderTemplates",
+            "url": "http://localhost:4201/remoteEntry.js"
+          }
+        },
+        {
+          "displayName": "Забор образцов",
+          "icon": [
+            "fa",
+            "fa-truck-ramp-box"
+          ],
+          "routePath": "sample-requests",
+          "permissions": [
+            "aeLimsSampleRequests"
+          ],
+          "options": {
+            "type": "remote",
+            "module": "SampleRequests",
+            "url": "http://localhost:4202/remoteEntry.js"
+          }
+        }
+      ]
+    },
+    {
+      "displayName": "Управление метками",
+      "icon": [
+        "fa",
+        "fa-tags"
+      ],
+      "permissions": [
+        "aeTagAssignment"
+      ],
+      "routePath": "tag-assignment",
+      "options": {
+        "type": "remote",
+        "module": "TagAssignment",
+        "url": "http://localhost:4203/remoteEntry.js"
+      }
+    },
+    {
+      "displayName": "Настройки",
+      "icon": [
+        "fa",
+        "fa-gears"
+      ],
+      "permissions": [
+        "aeSettings"
+      ],
+      "children": [
+        {
+          "displayName": "Управление сущностями",
+          "icon": [
+            "fa",
+            "fa-compass-drafting"
+          ],
+          "permissions": [
+            "aeSubject"
+          ],
+          "children": [
+            {
+              "displayName": "Исследуемые образцы",
+              "icon": [
+                "ae-sample-type"
+              ],
+              "routePath": "subjects",
+              "queryParams": {
+                "typeId": "00000000-0001-0005-0001-000000000000"
+              },
+              "permissions": [
+                "aeSubject"
+              ],
+              "options": {
+                "type": "remote",
+                "module": "Subject",
+                "url": "http://localhost:4204/remoteEntry.js"
+              }
+            },
+            {
+              "displayName": "Результат исследования",
+              "icon": [
+                "ae-sample-result"
+              ],
+              "routePath": "subjects",
+              "queryParams": {
+                "typeId": "00000000-0001-0005-0001-000000000001"
+              },
+              "permissions": [
+                "aeSubject"
+              ],
+              "options": {
+                "type": "remote",
+                "module": "Subject",
+                "url": "http://localhost:4204/remoteEntry.js"
+              }
+            },
+            {
+              "displayName": "Единицы измерения",
+              "icon": [
+                "ae-unit"
+              ],
+              "routePath": "subjects",
+              "queryParams": {
+                "typeId": "00000000-0001-0005-0001-000000000002"
+              },
+              "permissions": [
+                "aeSubject"
+              ],
+              "options": {
+                "type": "remote",
+                "module": "Subject",
+                "url": "http://localhost:4204/remoteEntry.js"
+              }
+            },
+            {
+              "displayName": "Метрология",
+              "icon": [
+                "ae-metrology"
+              ],
+              "routePath": "subjects",
+              "queryParams": {
+                "typeId": "00000000-0001-0005-0001-000000000003"
+              },
+              "permissions": [
+                "aeSubject"
+              ],
+              "options": {
+                "type": "remote",
+                "module": "Subject",
+                "url": "http://localhost:4204/remoteEntry.js"
+              }
+            }
+          ]
+        },
+        {
+          "displayName": "Точки отбора",
+          "icon": [
+            "fa",
+            "fa-faucet-drip"
+          ],
+          "permissions": [
+            "aeLimsSampleRequests"
+          ],
+          "routePath": "sample-sources",
+          "options": {
+            "type": "remote",
+            "module": "SampleSources",
+            "url": "http://localhost:4202/remoteEntry.js"
+          }
+        }
+      ]
+    }
+  ],
+  "services": {
+    "lims": {
+      "url": "https://localhost:1001"
+    },
+    "sample-requests": {
+      "url": "https://localhost:1002"
+    },
+    "subject": {
+      "url": "https://localhost:1004"
+    }
+  }
+}

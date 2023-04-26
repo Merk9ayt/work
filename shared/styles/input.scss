@@ -1,0 +1,29 @@
+.ae-input-w-full {
+  width: $w-full;
+
+  .p-inputnumber {
+    width: $w-full;
+
+    .p-inputnumber-input {
+      width: $w-full;
+    }
+  }
+}
+
+.ae-input-field-block {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 1;
+  flex-grow: 1;
+}
+
+.ae-input-field-block > label {
+  white-space: nowrap !important;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.ae-input-field-block > p-inputNumber {
+  @extend .ae-input-w-full;
+}

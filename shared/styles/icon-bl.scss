@@ -1,0 +1,20 @@
+.ae-sample-type {
+  @extend .fa;
+  @extend .fa-flask;
+}
+
+
+.ae-sample-result {
+  @extend .fa;
+  @extend .fa-chart-line;
+}
+
+.ae-unit {
+  @extend .fa;
+  @extend .fa-ruler;
+}
+
+.ae-metrology {
+  @extend .fa;
+  @extend .fa-ruler-combined;
+}

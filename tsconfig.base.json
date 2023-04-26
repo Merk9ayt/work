@@ -1,0 +1,32 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2020",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@ae-labs/apis/lims": ["libs/api-clients/lims/src/index.ts"],
+      "@ae-labs/apis/sample-requests": [
+        "libs/api-clients/sample-requests/src/index.ts"
+      ],
+      "@ae-labs/apis/subject": ["libs/api-clients/subject/src/index.ts"],
+      "@ae-labs/auth": ["libs/auth/src/index.ts"],
+      "@ae-labs/configuration": ["libs/configuration/src/index.ts"],
+      "@ae-labs/core": ["libs/core/src/index.ts"],
+      "@ae-labs/messaging": ["libs/message-bus/src/index.ts"],
+      "@ae-labs/ui": ["libs/ui/src/index.ts"],
+      "@ae-lib/i18n": ["libs/i18n/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

@@ -1,0 +1,32 @@
+{
+  "name": "api-lims",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/api/lims/src",
+  "prefix": "ae-shell",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/api/lims/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/api/lims/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/api/lims/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/api/lims/**/*.ts", "libs/api/lims/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}

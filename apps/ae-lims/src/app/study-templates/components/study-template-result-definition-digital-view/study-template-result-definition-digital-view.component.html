@@ -1,0 +1,23 @@
+<div class="h-full flex flex-column overflow-y-hidden">
+  <div class="flex">
+    <div>
+      <div class="ae-header text-overflow-ellipsis white-space-nowrap overflow-hidden ">{{'defaultValue'| i18next}}</div>
+      <div class="mt-1">{{viewModel.data.defaultValue ?? "0"}} {{viewModel.data.unit.name}}</div>
+    </div>
+    <p-divider layout="vertical"></p-divider>
+    <div>
+      <div class="ae-header text-overflow-ellipsis white-space-nowrap overflow-hidden ">{{'minValue' | i18next}}</div>
+      <div class="mt-1">{{viewModel.data.minValue}} {{viewModel.data.unit.name}}</div>
+    </div>
+    <p-divider layout="vertical"></p-divider>
+    <div class="field flex flex-column">
+      <div class="ae-header text-overflow-ellipsis white-space-nowrap overflow-hidden ">{{'maxValue' | i18next}}</div>
+      <div class="mt-1">{{viewModel.data.maxValue}} {{viewModel.data.unit.name}}</div>
+    </div>
+  </div>
+  <p-card header="{{'metrology' | i18next}}" class="flex-grow-1 mt-3 ae-card-h-full overflow-y-hidden">
+    <ae-lims-study-template-result-precision-list class="overflow-y-hidden"
+                                                  [viewModel]="viewModel.precisionListViewModel">
+    </ae-lims-study-template-result-precision-list>
+  </p-card>
+</div>

@@ -1,0 +1,10 @@
+<p-splitter class="h-full w-full" panelStyleClass="h-full" styleClass="h-full border-none" [panelSizes]="[30,70]">
+  <div>SUBJECT PAGE</div>
+  <ng-template pTemplate>
+    <ae-subject-list [subjects$]="subjects$" (subjectSelected)="subjectSelect($event)"/>
+  </ng-template>
+  <ng-template pTemplate>
+    <router-outlet></router-outlet>
+  </ng-template>
+</p-splitter>
+

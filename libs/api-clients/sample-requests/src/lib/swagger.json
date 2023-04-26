@@ -1,0 +1,997 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Sample Request Application",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/v1/sample-requests": {
+      "get": {
+        "tags": [
+          "SampleRequest"
+        ],
+        "summary": "Retrieves the list of sample requests matching defined filter conditions.",
+        "operationId": "SampleRequestGet",
+        "parameters": [
+          {
+            "name": "Filters",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Sorts",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SampleRequestDtoPagedResultDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SampleRequestDtoPagedResultDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SampleRequestDtoPagedResultDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "SampleRequest"
+        ],
+        "summary": "Creates new Sample Request",
+        "operationId": "SampleRequestCreate",
+        "requestBody": {
+          "description": "The Sample Request content.",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SampleRequestCreateDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SampleRequestCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SampleRequestCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SampleRequestCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/api/v1/sample-requests/{id}": {
+      "patch": {
+        "tags": [
+          "SampleRequest"
+        ],
+        "summary": "Updates the specified sample request.",
+        "operationId": "SampleRequestUpdate",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique identifier of the sample request.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The data patching settings.",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Operation"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Operation"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Operation"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Operation"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "SampleRequest"
+        ],
+        "summary": "Retrieves sample request by its identifier",
+        "operationId": "SampleRequestGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique identifier of the sample request.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SampleRequestDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SampleRequestDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SampleRequestDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/sample-requests/{id}/complete": {
+      "post": {
+        "tags": [
+          "SampleRequest"
+        ],
+        "summary": "Completes the specified sample request.",
+        "operationId": "SampleRequestComplete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique identifier of the sample request.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "label",
+            "in": "query",
+            "description": "The tag (optional)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/sample-requests/{id}/cancel": {
+      "post": {
+        "tags": [
+          "SampleRequest"
+        ],
+        "summary": "Cancels the specified sample request.",
+        "operationId": "SampleRequestCancel",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique identifier of the sample request.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/sample-sources": {
+      "get": {
+        "tags": [
+          "SampleSource"
+        ],
+        "summary": "Retrieves the list of sample sources matching defined filter conditions.",
+        "operationId": "SampleSourceGet",
+        "parameters": [
+          {
+            "name": "Filters",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Sorts",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SampleSourceDtoPagedResultDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SampleSourceDtoPagedResultDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SampleSourceDtoPagedResultDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "SampleSource"
+        ],
+        "summary": "Creates new Sample Source",
+        "operationId": "SampleSourceCreate",
+        "requestBody": {
+          "description": "The Sample Source content.",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SampleSourceCreateDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SampleSourceCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SampleSourceCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SampleSourceCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SampleSourceCreateResultDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SampleSourceCreateResultDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SampleSourceCreateResultDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/sample-sources/{id}": {
+      "get": {
+        "tags": [
+          "SampleSource"
+        ],
+        "summary": "Retrieves sample sources by its identifier",
+        "operationId": "SampleSourceGetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique identifier of the sample source.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SampleSourceDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SampleSourceDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SampleSourceDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/sample-sources/{id}/activate": {
+      "post": {
+        "tags": [
+          "SampleSource"
+        ],
+        "summary": "Activate the specified sample source.",
+        "operationId": "SampleSourceActivate",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique identifier of the sample source.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/sample-sources/{id}/deactivate": {
+      "post": {
+        "tags": [
+          "SampleSource"
+        ],
+        "summary": "Deactivate the specified sample source.",
+        "operationId": "SampleSourceDeactivate",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique identifier of the sample source.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/sample-sources/{id}/archive": {
+      "post": {
+        "tags": [
+          "SampleSource"
+        ],
+        "summary": "Archive the specified sample source.",
+        "operationId": "SampleSourceArchive",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique identifier of the sample source.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ErrorDto": {
+        "required": [
+          "instance",
+          "status",
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "instance": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "title": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "stackTrace": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "extensions": {
+            "type": "object",
+            "additionalProperties": { },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Operation": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "nullable": true
+          },
+          "path": {
+            "type": "string",
+            "nullable": true
+          },
+          "op": {
+            "type": "string",
+            "nullable": true
+          },
+          "from": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SampleRequestCreateDto": {
+        "type": "object",
+        "properties": {
+          "sampleSourceId": {
+            "type": "string",
+            "description": "The link to sample source",
+            "format": "uuid"
+          },
+          "plannedDate": {
+            "type": "string",
+            "description": "Planned date for sample request",
+            "format": "date-time",
+            "nullable": true
+          },
+          "label": {
+            "type": "string",
+            "description": "The link to tag assignment",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "DTO-model for sample request creation"
+      },
+      "SampleRequestDto": {
+        "required": [
+          "createdAt",
+          "createdBy",
+          "id",
+          "modifiedAt",
+          "modifiedBy",
+          "sampleSourceId",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "sampleSourceId": {
+            "type": "string",
+            "description": "The link to sample source",
+            "format": "uuid"
+          },
+          "plannedDate": {
+            "type": "string",
+            "description": "Planned date for sample request",
+            "format": "date-time",
+            "nullable": true
+          },
+          "label": {
+            "type": "string",
+            "description": "The link to tag assignment",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/SampleRequestStatus"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "modifiedBy": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false,
+        "description": "The sample request"
+      },
+      "SampleRequestDtoPagedResultDto": {
+        "required": [
+          "entries"
+        ],
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "entries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SampleRequestDto"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "SampleRequestStatus": {
+        "enum": [
+          "Requested",
+          "Received",
+          "Canceled"
+        ],
+        "type": "string"
+      },
+      "SampleSourceCreateDto": {
+        "required": [
+          "name",
+          "specimens"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "minLength": 1,
+            "type": "string",
+            "description": "The name of source sample"
+          },
+          "description": {
+            "type": "string",
+            "description": "The description of source sample (optional)",
+            "nullable": true
+          },
+          "specimens": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SampleSourceSpecimenDto"
+            },
+            "description": "List of Specimens"
+          },
+          "assetId": {
+            "type": "string",
+            "description": "The link to fixed assets subsystem (optional)",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "The sample sources that can be used for sampling"
+      },
+      "SampleSourceCreateResultDto": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Sample source Id",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false,
+        "description": "DTO-model for Sample source creation"
+      },
+      "SampleSourceDto": {
+        "required": [
+          "createdAt",
+          "createdBy",
+          "id",
+          "modifiedAt",
+          "modifiedBy",
+          "name",
+          "specimens",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "minLength": 1,
+            "type": "string",
+            "description": "The name of source sample"
+          },
+          "description": {
+            "type": "string",
+            "description": "The description of source sample (optional)",
+            "nullable": true
+          },
+          "specimens": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SampleSourceSpecimenDto"
+            },
+            "description": "List of Specimens"
+          },
+          "status": {
+            "$ref": "#/components/schemas/SampleSourceStatus"
+          },
+          "assetId": {
+            "type": "string",
+            "description": "The link to fixed assets subsystem (optional)",
+            "format": "uuid",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "modifiedBy": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false,
+        "description": "The sample sources that can be used for sampling"
+      },
+      "SampleSourceDtoPagedResultDto": {
+        "required": [
+          "entries"
+        ],
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "entries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SampleSourceDto"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "SampleSourceSpecimenDto": {
+        "required": [
+          "name",
+          "specimenId"
+        ],
+        "type": "object",
+        "properties": {
+          "specimenId": {
+            "type": "string",
+            "description": "The id of specimen",
+            "format": "uuid"
+          },
+          "name": {
+            "minLength": 1,
+            "type": "string",
+            "description": "The name of specimen"
+          },
+          "description": {
+            "type": "string",
+            "description": "The description of specimen (optional)",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "The sample sources Specimen"
+      },
+      "SampleSourceStatus": {
+        "enum": [
+          "Pending",
+          "Active",
+          "Deactivated",
+          "Archived"
+        ],
+        "type": "string"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "SampleRequest",
+      "description": "The sample request management controller."
+    },
+    {
+      "name": "SampleSource",
+      "description": "The sample source management controller."
+    }
+  ]
+}

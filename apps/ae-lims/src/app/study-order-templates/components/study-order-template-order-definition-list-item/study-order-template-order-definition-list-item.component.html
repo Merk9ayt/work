@@ -1,0 +1,39 @@
+<p-card header="Методика" class="m-1">
+  <div class="flex ">
+    <div class="flex-grow-1">
+      <div>
+        {{viewModel.data.studyTemplate.code}} {{viewModel.data.studyTemplate.name}}
+      </div>
+      <div class="ae-header">Ревизия: {{viewModel.data.studyTemplate.revision}}</div>
+
+      <div>
+        <ae-lims-study-order-template-sample-source-list
+          [viewModel]="sampleSourceListViewModel">
+        </ae-lims-study-order-template-sample-source-list>
+      </div>
+      <div>
+        <ae-lims-study-order-template-result-list
+          [viewModel]="resultListViewModel">
+        </ae-lims-study-order-template-result-list>
+      </div>
+
+    </div>
+    <div class="m-0  col-fixed">
+      <div class="flex justify-content-end">
+        <div [hidden]=!canEdit>
+          <button class="p-button-rounded p-button-text w-2rem h-2rem m-1 p-button-plain"
+                  type="button"
+                  pButton
+                  icon="ae-icon-edit"></button>
+        </div>
+        <div [hidden]="!canDelete">
+          <button class="p-button-rounded p-button-text w-2rem h-2rem m-1 p-button-plain"
+                  type="button"
+                  pButton
+                  (click)="delete()"
+                  icon="ae-icon-delete"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</p-card>

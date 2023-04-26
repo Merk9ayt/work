@@ -1,0 +1,8 @@
+{
+  "applications": [],
+  "services": {
+    "lims": {
+      "url": "https://localhost:1001"
+    }
+  }
+}

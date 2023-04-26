@@ -1,0 +1,16 @@
+.ae-splitter-h-w-full {
+  height: $h-full;
+  width: $w-full;
+
+  overflow: hidden;
+
+  .p-splitter {
+    height: $h-full;
+
+    .p-splitter-panel {
+      overflow: hidden;
+      height: $h-full;
+      padding: 0.5rem;
+    }
+  }
+}

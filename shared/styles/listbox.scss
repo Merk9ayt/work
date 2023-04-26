@@ -1,0 +1,19 @@
+@import "constants";
+
+.ae-listbox-h-full {
+  .grid {
+    height: $h-full;
+  }
+
+  .p-listbox {
+    height: $h-full !important;
+
+    .p-listbox-list-wrapper {
+      height: $h-full !important;
+    }
+
+    .p-listbox-list {
+      height: $h-full !important;
+    }
+  }
+}

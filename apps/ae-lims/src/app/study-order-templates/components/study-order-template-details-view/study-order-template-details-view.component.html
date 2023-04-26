@@ -1,0 +1,41 @@
+<p-panel class="ae-panel-h-full">
+  <ng-template pTemplate="header">
+    <div class="flex w-full">
+      <div class="w-6rem text-overflow-ellipsis white-space-nowrap overflow-hidden">{{template?.code}}</div>
+      <div class="flex flex-grow-1 justify-content-between">
+        <div class="ae-header">{{template?.name}}</div>
+        <div class="ae-header">Ревизия: {{template?.revision}}</div>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="icons">
+    <div class="flex justify-content-end" style="min-width: 5rem">
+      <button *ngIf="canEdit" pButton class="p-panel-header-icon p-link" [title]="'buttons.edit' | i18next"
+              (click)="toEdit()">
+        <span class="ae-icon-edit"></span>
+      </button>
+      <button pButton class="p-panel-header-icon p-link" [title]="'details.view.editInNewVersion' | i18next"
+              (click)="toCreate()">
+        <span class="ae-icon-new"></span>
+      </button>
+      <button *ngIf="canDelete" pButton class="p-panel-header-icon p-link" [title]="'details.view.archive' | i18next"
+              (click)="delete()">
+        <span class="ae-icon-delete"></span>
+      </button>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="content">
+    <div class="flex flex-column h-full">
+      <div>
+        <p-card class="ae-card-p0" [header]="'description' | i18next" styleClass="h-full h-12rem">
+          <div>{{(template?.description) ?? ''}}</div>
+        </p-card>
+      </div>
+      <div class="flex-grow-1 overflow-y-hidden">
+        <p-card class="ae-card-h-full " header="Исследования" styleClass="mt-2 ">
+          <ae-lims-study-order-template-order-definition-list [viewModel]="viewModel.studiesViewModel"/>
+        </p-card>
+      </div>
+    </div>
+  </ng-template>
+</p-panel>

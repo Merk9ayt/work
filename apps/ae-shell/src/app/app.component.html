@@ -1,0 +1,9 @@
+<div *ngIf="initialized; else loading">
+  <router-outlet></router-outlet>
+</div>
+
+<ng-template #loading>
+  <div class="splash">
+    <img src="assets/images/ae-logo.svg" alt="AE Labs" />
+  </div>
+</ng-template>

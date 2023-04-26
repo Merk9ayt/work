@@ -1,0 +1,76 @@
+<p-panel class="ae-panel-h-full">
+  <!--  <ng-template pTemplate="header">-->
+  <!--    <div class="ae-header">{{displayVersion}}</div>-->
+  <!--  </ng-template>-->
+  <ng-template pTemplate="icons">
+    <button pButton class="p-panel-header-icon p-link" (click)="submit(false)">
+      <span class="ae-icon-save"></span>
+    </button>
+    <button pButton class="p-panel-header-icon p-link" (click)="submit(true)">
+      <span class="ae-icon-ok"></span>
+    </button>
+    <button pButton class="p-panel-header-icon p-link" (click)="toView()">
+      <span class="ae-icon-close"></span>
+    </button>
+  </ng-template>
+  <ng-template pTemplate="content">
+    <p-tabView class="h-full" styleClass="ae-tabView-h-full">
+      <p-tabPanel header="{{'common:basic' | i18next}}">
+        <form class="grid h-full" [formGroup]="baseDataForm">
+          <div class="col">
+            <div class="flex flex-column h-full">
+              <div class="p-float-label mt-4">
+                <input class="w-full" id="code-input" type="text" pInputText formControlName="code">
+                <label for="code-input">{{'details.code' | i18next }}</label>
+              </div>
+              <div class="p-float-label mt-4">
+                <input class="w-full" id="revision-input" type="text" pInputText formControlName="revision">
+                <label for="revision-input">{{'details.revision' | i18next }}</label>
+              </div>
+
+              <div class="p-float-label mt-4">
+                <textarea id="name-input" rows="5" class="ae-textarea-fixed-w-max" pInputTextarea
+                          formControlName="name"></textarea>
+                <label for="name-input">{{'details.name' | i18next }}</label>
+              </div>
+              <div class="p-float-label mt-4 flex-auto ">
+            <textarea class="ae-textarea-fixed-w-max h-full" id="official-name-input" pInputTextarea
+                      formControlName="officialName"></textarea>
+                <label for="official-name-input">{{'officialName' | i18next }}</label>
+              </div>
+            </div>
+          </div>
+          <p-divider layout="vertical"></p-divider>
+          <div class="col">
+            <div class="flex flex-column h-full">
+              <div class="p-float-label mt-4 flex-auto">
+          <textarea class="ae-textarea-fixed-w-max h-full" id="description-name-input"
+                    pInputTextarea formControlName="description"></textarea>
+                <label for="description-name-input">{{'common:description' | i18next }}</label>
+              </div>
+            </div>
+          </div>
+        </form>
+      </p-tabPanel>
+      <p-tabPanel header="{{'common:samples' | i18next}}" class="h-full">
+        <ae-lims-study-template-sample-list [viewModel]="viewModel.samplesViewModel"
+                                            [formMode]=formMode>
+        </ae-lims-study-template-sample-list>
+      </p-tabPanel>
+      <p-tabPanel header="{{'common:results' | i18next}}">
+        <ae-lims-study-template-result-definition-list
+          [viewModel]="viewModel.resultsViewModel"
+          [formMode]=formMode>
+        </ae-lims-study-template-result-definition-list>
+      </p-tabPanel>
+      <p-tabPanel header="{{'common:research' | i18next}}">
+      </p-tabPanel>
+      <p-tabPanel header="{{'common:equipment' | i18next}}">
+      </p-tabPanel>
+      <p-tabPanel header="{{'common:materials' | i18next}}">
+      </p-tabPanel>
+    </p-tabView>
+  </ng-template>
+</p-panel>
+
+

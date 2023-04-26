@@ -1,0 +1,10 @@
+<p-listbox class="ae-listbox-h-full"
+           [options]="(subjects$|async) ?? []"
+           (onChange)="selected($event.value)">
+  <ng-template let-subject pTemplate="item">
+    <ae-subject-card class="w-full"
+                     [subject]="subject"/>
+  </ng-template>
+</p-listbox>
+
+

@@ -1,0 +1,10 @@
+{
+  "details": {
+    "archive": "Archive",
+    "code": "Code",
+    "revision": "Revision",
+    "name": "Name",
+    "editInNewVersion": "Edit in new version"
+  },
+  "officialName": "Official name"
+}

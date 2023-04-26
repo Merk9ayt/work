@@ -1,0 +1,36 @@
+<div class="flex lg:justify-content-between border-bottom-1 surface-border surface-overlay w-full mt-1">
+  <div class="flex-grow-1">
+    <div class="ae-header text-overflow-ellipsis white-space-nowrap overflow-hidden ">
+      {{viewModel.data.name}}
+    </div>
+    <div class="h-3rem mt-1 text-base">
+      {{viewModel.data.description}}
+    </div>
+  </div>
+  <div class="m-0">
+    <div class="flex justify-content-end">
+      <div [hidden]=!canView>
+        <button class="p-button-rounded p-button-text w-2rem h-2rem m-1 p-button-plain"
+                type="button"
+                pButton
+                (click)="view()"
+                icon="ae-icon-view"></button>
+      </div>
+
+      <div [hidden]=!canEdit>
+        <button class="p-button-rounded p-button-text w-2rem h-2rem m-1 p-button-plain"
+                type="button"
+                pButton
+                (click)="edit()"
+                icon="ae-icon-edit"></button>
+      </div>
+      <div [hidden]="!canDelete">
+        <button class="p-button-rounded p-button-text w-2rem h-2rem m-1 p-button-plain"
+                type="button"
+                pButton
+                (click)="delete()"
+                icon="ae-icon-delete"></button>
+      </div>
+    </div>
+  </div>
+</div>

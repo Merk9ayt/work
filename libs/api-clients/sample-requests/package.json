@@ -1,0 +1,17 @@
+{
+  "name": "@ae-labs/apis/sample-requests",
+  "version": "0.0.1",
+  "scripts": {
+    "generate": "ng-openapi-gen --config ./src/lib/generator.json"
+  },
+  "peerDependencies": {
+    "@angular/common": "^15.1.0",
+    "@angular/core": "^15.1.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "ng-openapi-gen": "0.24.0"
+  }
+}

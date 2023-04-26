@@ -1,0 +1,11 @@
+<p-card styleClass="ae-card-p0">
+  <ng-template pTemplate="content">
+    <div class="ae-header">{{studyTemplate.code}}</div>
+    <div class="ae-header my-2">{{studyTemplate.name}}</div>
+    <div class="ae-text my-2">{{studyTemplate.description}}</div>
+    <div class="flex w-full justify-content-between">
+      <div class="ae-text-important">{{studyTemplate.status}}</div>
+      <div class="ae-text-important">{{'details.revision'| i18next}}: {{studyTemplate.revision}}</div>
+    </div>
+  </ng-template>
+</p-card>

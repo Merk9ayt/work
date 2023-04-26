@@ -1,0 +1,11 @@
+<p-splitter class="h-full w-full" panelStyleClass="h-full" styleClass="h-full border-none" [panelSizes]="[30,70]">
+  <ng-template pTemplate>
+    <ae-lims-study-order-templates-list [studyTemplates$]="studyTemplates$"
+                                        (studyTemplateSelected)="studyTemplateSelect($event)"
+                                        (studyTemplateCreate)="studyTemplateCreate($event)"/>
+  </ng-template>
+  <ng-template pTemplate>
+    <router-outlet></router-outlet>
+  </ng-template>
+</p-splitter>
+

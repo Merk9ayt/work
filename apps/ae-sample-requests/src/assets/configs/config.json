@@ -1,0 +1,8 @@
+{
+  "applications": [],
+  "services": {
+    "sample-requests": {
+      "url": "http://localhost:1002"
+    }
+  }
+}

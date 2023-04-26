@@ -1,0 +1,23 @@
+<div class="h-full">
+  <div class="flex flex-column h-full">
+    <div class="flex-shrink-1  overflow-y-hidden">
+      <p-listbox class="ae-listbox-h-full" styleClass=" border-0"
+                 [options]="(studyTemplates$|async) ?? []"
+                 (onChange)="onSelect($event.value)">
+        <ng-template let-template pTemplate="item">
+          <ae-lims-study-order-template-card class="w-full"
+                                             [studyOrderTemplate]="template"/>
+        </ng-template>
+      </p-listbox>
+    </div>
+    <div class="flex justify-content-end p-2">
+      <div [hidden]="!canAdd">
+        <button class="p-button-rounded mr-4"
+                pButton
+                type="button"
+                icon="ae-icon-new"
+                (click)="add()"></button>
+      </div>
+    </div>
+  </div>
+</div>

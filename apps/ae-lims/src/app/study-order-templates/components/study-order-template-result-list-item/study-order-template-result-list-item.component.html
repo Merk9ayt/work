@@ -1,0 +1,18 @@
+<div class="lg:justify-content-between border-bottom-1 surface-border surface-overlay w-full mt-1">
+  <div class="ae-header">
+    {{viewModel.data.parameter.name}}  {{viewModel.data.specimen.name}}  {{viewModel.data.unit.name}}
+  </div>
+  <div class="mt-2">
+    <span [hidden]="!haveMin">
+      <span class="ae-header">Min:</span> {{viewModel.data.minPermissibleValue}}
+    </span>
+    <span [hidden]="!haveMax">
+      <span class="ae-header">Max:</span> {{viewModel.data.maxPermissibleValue}}
+    </span>
+  </div>
+  <div class="mt-2">
+        <span [hidden]="!havePrecision">
+      <span class="ae-header">Допустимая погрешность:</span> {{viewModel.data.precision}}
+    </span>
+  </div>
+</div>

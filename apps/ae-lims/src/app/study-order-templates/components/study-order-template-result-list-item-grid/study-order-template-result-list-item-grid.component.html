@@ -1,0 +1,20 @@
+<!--<div class="col-12 sm:col-6 lg:col-12 xl:col-4 p-2">-->
+<div class="p-4 border-1 surface-border surface-card border-round">
+  <div class="ae-header">
+    {{viewModel.data.parameter.name}}  {{viewModel.data.specimen.name}}  {{viewModel.data.unit.name}}
+  </div>
+  <div class="mt-2">
+    <span [hidden]="!haveMin">
+      <span class="ae-header">Min:</span> {{viewModel.data.minPermissibleValue}}
+    </span>
+    <span [hidden]="!haveMax">
+      <span class="ae-header">Max:</span> {{viewModel.data.maxPermissibleValue}}
+    </span>
+  </div>
+  <div class="mt-2">
+        <span [hidden]="!havePrecision">
+      <span class="ae-header">Допустимая погрешность:</span> {{viewModel.data.precision}}
+    </span>
+  </div>
+</div>
+<!--</div>-->

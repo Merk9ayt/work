@@ -1,0 +1,23 @@
+.ae-layout-wrapper {
+
+  .ae-layout-main {
+    padding-top: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    margin-left: 20rem;
+
+    .ae-layout-content {
+      flex: 1 1 0;
+      padding: 12px 32px 24px;
+      overflow: auto;
+    }
+  }
+
+  &.ae-layout-compact-menu {
+    .ae-layout-main {
+      margin-left: 4rem;
+    }
+  }
+}

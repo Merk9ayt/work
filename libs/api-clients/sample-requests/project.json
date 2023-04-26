@@ -1,0 +1,32 @@
+{
+  "name": "api-sample-requests",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/api/sample-requests/src",
+  "prefix": "ae-sample-requests",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/api/sample-requests/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/api/sample-requests/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/api/sample-requests/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/api/lims/**/*.ts", "libs/api/lims/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}

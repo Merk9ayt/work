@@ -1,0 +1,65 @@
+<ul class="ae-submenu-list">
+  <ng-template ngFor let-child [ngForOf]="items">
+    <li *ngIf="child.separator" class="p-menu-separator" [ngClass]="{ 'hidden': child.visible === false }"></li>
+    <li *ngIf="!child.separator"
+        [ngClass]="{'ae-menuitem': true, 'ae-menuitem-active': child === activeItem, 'hidden': child.visible === false}"
+        [ngStyle]="child.style"
+        [class]="child.styleClass ?? ''"
+        pTooltip
+        [tooltipOptions]="child.tooltipOptions ?? {}"
+    >
+      <a
+        *ngIf="!child.routerLink"
+        [attr.href]="child.url"
+        [attr.data-automationid]="child.automationId"
+        [target]="child.target"
+        [attr.title]="child.title"
+        [attr.id]="child.id"
+        (click)="onItemClick($event, child)"
+        [ngClass]="{ 'ae-menuitem-link': true, 'disabled': child.disabled }"
+        [attr.tabindex]="child.disabled ? null : '0'"
+        pRipple
+      >
+        <span class="ae-menuitem-icon" *ngIf="child.icon" [ngClass]="child.icon" [ngStyle]="child.iconStyle"></span>
+        <span class="ae-menuitem-text" *ngIf="child.escape !== false; else htmlLabel">{{ child.label }}</span>
+        <ng-template #htmlLabel><span class="p-menuitem-text" [innerHTML]="child.label"></span></ng-template>
+        <span class="ae-menuitem-badge" *ngIf="child.badge" [ngClass]="child.badgeStyleClass">{{ child.badge }}</span>
+        <span class="ae-submenu-expander fa fa-chevron-right" *ngIf="child.items"></span>
+      </a>
+      <a
+        *ngIf="child.routerLink"
+        [routerLink]="child.routerLink"
+        [attr.data-automationid]="child.automationId"
+        [queryParams]="child.queryParams"
+        [routerLinkActive]="'ae-menuitem-link-active'"
+        [routerLinkActiveOptions]="child.routerLinkActiveOptions || { exact: false }"
+        [target]="child.target"
+        [attr.title]="child.title"
+        [attr.id]="child.id"
+        [attr.tabindex]="child.disabled ? null : '0'"
+        role="menuitem"
+        (click)="onItemClick($event, child)"
+        [ngClass]="{ 'ae-menuitem-link': true, 'disabled': child.disabled }"
+        [fragment]="child.fragment"
+        [queryParamsHandling]="child.queryParamsHandling"
+        [preserveFragment]="child.preserveFragment"
+        [skipLocationChange]="child.skipLocationChange"
+        [replaceUrl]="child.replaceUrl"
+        [state]="child.state"
+        pRipple
+      >
+        <span class="ae-menuitem-icon" *ngIf="child.icon" [ngClass]="child.icon" [ngStyle]="child.iconStyle"></span>
+        <span class="ae-menuitem-text" *ngIf="child.escape !== false; else htmlRouteLabel">{{ child.label }}</span>
+        <ng-template #htmlRouteLabel><span class="p-menuitem-text" [innerHTML]="child.label"></span></ng-template>
+        <span class="ae-menuitem-badge" *ngIf="child.badge" [ngClass]="child.badgeStyleClass">{{ child.badge }}</span>
+        <span class="ae-submenu-expander fa fa-chevron-right" *ngIf="child.items"></span>
+      </a>
+    </li>
+    <ae-sub-menu
+      *ngIf="child.items && child.items.length > 0 && child === activeItem"
+      [items]="child.items"
+      [parentActive]="child === activeItem"
+      [@children]="child === activeItem ? 'visible' : 'hidden'"
+    ></ae-sub-menu>
+  </ng-template>
+</ul>

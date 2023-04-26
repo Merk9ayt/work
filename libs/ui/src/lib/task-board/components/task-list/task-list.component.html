@@ -1,0 +1,16 @@
+<p-panel *ngIf="model"
+         [toggleable]="false"
+         [header]="model.title"
+         styleClass="ae-task-list">
+  <ng-template pTemplate="content">
+    <div class="flex flex-grow-1 flex-nowrap flex-column gap-3">
+      <ae-task *ngFor="let task of model.tasks"
+               pDraggable="tasks"
+               dragEffect="move"
+               [model]="task"
+               (onDragStart)="onDragStart(model.id, task)"
+               (onDragEnd)="onDragEnd()"
+      ></ae-task>
+    </div>
+  </ng-template>
+</p-panel>

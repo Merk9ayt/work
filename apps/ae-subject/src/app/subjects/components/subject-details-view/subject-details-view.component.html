@@ -1,0 +1,23 @@
+<div class="w-full">
+  <p-panel>
+    <ng-template pTemplate="header">
+      <div class="ae-header">{{template?.name}}</div>
+    </ng-template>
+    <ng-template pTemplate="icons">
+      <button *ngIf="canEdit" pButton class="p-panel-header-icon p-link" [title]="'buttons.edit' | i18next"
+              (click)="toEdit()">
+        <span class="ae-icon-edit"></span>
+      </button>
+      <button *ngIf="canDelete" pButton class="p-panel-header-icon p-link" [title]="'buttons.delete' | i18next"
+              (click)="delete()">
+        <span class="ae-icon-delete"></span>
+      </button>
+
+    </ng-template>
+    <div class="grid h-full w-full">
+      <p-card [header]="'description' | i18next" class="w-full">
+        <div>{{(template?.description) ?? ''}}</div>
+      </p-card>
+    </div>
+  </p-panel>
+</div>

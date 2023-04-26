@@ -1,0 +1,53 @@
+.ae-submenu-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  .ae-submenu-list {
+    padding-left: 1em;
+  }
+
+  li {
+    a {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      user-select: none;
+      cursor: pointer;
+      padding: 8px 16px;
+      transition: background-color 0.3s;
+      color: var(--text-color-secondary);
+
+      .ae-menuitem-icon {
+        margin-right: 8px;
+        display: inline-block;
+        vertical-align: middle;
+        flex-grow: 0;
+      }
+
+      .ae-menuitem-text {
+        display: inline-block;
+        vertical-align: middle;
+        flex-grow: 1;
+      }
+
+      .ae-submenu-expander {
+        flex-grow: 0;
+        transition: transform .3s;
+      }
+    }
+
+    &.ae-menuitem-active {
+      a {
+        color: var(--primary-color);
+        transition: color .3s;
+        font-weight: 700;
+      }
+
+      .ae-submenu-expander {
+        transform: rotate(90deg);
+        transition: transform .3s;
+      }
+    }
+  }
+}

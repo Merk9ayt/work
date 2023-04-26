@@ -1,0 +1,8 @@
+{
+  "applications": [],
+  "services": {
+    "subject": {
+      "url": "https://localhost:1004"
+    }
+  }
+}

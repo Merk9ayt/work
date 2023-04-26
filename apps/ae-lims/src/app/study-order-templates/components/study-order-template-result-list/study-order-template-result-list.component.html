@@ -1,0 +1,36 @@
+<!--<div class="flex flex-column mt-2">-->
+<p-card class="ae-card-p0" header="Результаты">
+  <div>
+    <div class="flex flex-column h-full overflow-y-hidden">
+      <div class="overflow-y-auto ">
+        <p-dataView [value]="viewModel.items"
+                    [paginator]="false"
+                    layout="grid">
+          <ng-template let-result pTemplate="listItem">
+            <ae-lims-study-order-template-result-list-item class="w-full m-1"
+                                                           [viewModel]="result"
+                                                           [formMode]="formMode"
+                                                           (deleted)="delete($event)"/>
+          </ng-template>
+          <ng-template let-result pTemplate="gridItem">
+            <ae-lims-study-order-template-result-list-item-grid class="m-1"
+                                                                [viewModel]="result"
+                                                                [formMode]="formMode"
+                                                                (deleted)="delete($event)"/>
+          </ng-template>
+        </p-dataView>
+      </div>
+      <div class="flex justify-content-end p-2">
+        <div [hidden]="!canAdd">
+          <button class="p-button-rounded mr-4"
+                  pButton
+                  pRipple
+                  type="button"
+                  icon="ae-icon-new"
+                  (click)="add()"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</p-card>
+<!--</div>-->

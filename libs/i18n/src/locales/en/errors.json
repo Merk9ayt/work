@@ -1,0 +1,22 @@
+{
+  "unspecified": {
+    "title": "Неизвестная ошибка",
+    "details": "Что-то пошло не так."
+  },
+  "unauthorized": {
+    "title": "Unauthorized",
+    "details": "Credentials are not available. Please log in again."
+  },
+  "forbidden": {
+    "title": "Access Denied",
+    "details": "You do not have the permission for this action. Please contact the administrator for further assistance."
+  },
+  "serviceunavailable": {
+    "title": "Service is offline",
+    "details": "Service is offline. Please contact Administrator."
+  },
+  "badgateway": {
+    "title": "Bad Gateway",
+    "details": "Received an invalid response from upstream server."
+  }
+}

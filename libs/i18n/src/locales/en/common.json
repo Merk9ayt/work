@@ -1,0 +1,18 @@
+{
+  "buttons": {
+    "back": "Back",
+    "cancel": "Cancel",
+    "close": "Close",
+    "delete": "Delete",
+    "edit": "Edit",
+    "save": "Save",
+    "no": "No",
+    "ok": "OK",
+    "yes": "Yes"
+  },
+  "name": "Name",
+  "description": "Description",
+  "home": "Home",
+  "unit": "Unit",
+  "defaultValue": "Default value"
+}

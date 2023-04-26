@@ -1,0 +1,13 @@
+<div class="ae-layout-header">
+  <div class="ae-layout-header-wrapper">
+    <div class="ae-layout-header-left"
+         [class]="{'ae-layout-header-left-compact': compactMenu$ | async}">
+      <div class="ae-layout-header-logo" routerLink="/" tabindex="0"></div>
+    </div>
+    <div class="ae-layout-header-right">
+      <div class="ae-layout-header-actions">
+        <ae-user-profile-menu></ae-user-profile-menu>
+      </div>
+    </div>
+  </div>
+</div>

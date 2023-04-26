@@ -1,0 +1,20 @@
+@import "constants";
+
+.ae-tabView-h-full.p-tabview {
+  height: $h-full !important;
+  display: flex;
+  flex-direction: column;
+
+  .p-tabview-panels {
+    .p-tabview-panel {
+      height: $h-full !important;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    height: $h-full !important;
+    flex-grow: 1;
+    flex-shrink: 1;
+    overflow: hidden;
+  }
+}
