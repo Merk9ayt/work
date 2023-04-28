@@ -2,8 +2,10 @@
   "menu": {
     "subject": "Subjects",
     "specimens": "Specimens",
-    "results": "Study results"
+    "resultsResearch": "Результат исследования"
   },
-  "typeResult": "Type of research results",
-  "objectResult": "Result object"
+  "nameResult": "Name result",
+  "object": "Object",
+  "typeResult": "Type result",
+  "objectResult": "Object result"
 }

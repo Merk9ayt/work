@@ -8,5 +8,11 @@
   "maxVolume": "Max Volume",
   "minValue": "Min Value",
   "maxValue": "Max Value",
-  "metrology": "Metrology"
+  "maxValueResult": "max Value Result",
+  "minValueResult": "min Value Result",
+  "metrology": "Metrology",
+  "value": "Value",
+  "analyzedSample": "Analyzed sample",
+  "sampleEdit": "Sample Editing",
+  "metrologyEdit": "Metrology editing"
 }

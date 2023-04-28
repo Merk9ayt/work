@@ -45,7 +45,7 @@ export class StudyTemplateSampleListItemViewComponent extends AeBaseComponent {
   edit(): void {
     const ref = this.dialogService.open(StudyTemplateSampleItemEditComponent, {
       data: this.viewModel,
-      header: 'Редактирование образца',
+      header: this.i18NextService.t('sampleEdit'),
     });
 
     ref.onClose.subscribe((sample: StudyTemplateSampleModel) => {

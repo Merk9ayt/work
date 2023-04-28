@@ -4,7 +4,6 @@ import { DocumentStatus } from '@ae-labs/core';
 import { AeBaseComponent } from '@ae-labs/ui';
 import { StudyTemplateBaseModel } from '../../models/study-template-base.model';
 
-
 @Component({
   selector: 'ae-lims-study-template-card',
   templateUrl: './study-template-card.component.html',

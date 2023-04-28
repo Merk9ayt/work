@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { I18NEXT_NAMESPACE } from 'angular-i18next';
 import {
   DialogService,
   DynamicDialogConfig,
@@ -11,6 +12,12 @@ import { StudyTemplateResultDefinitionViewModel } from '../../view-models/study-
   selector: 'ae-lims-study-result-definition-edit',
   templateUrl: './study-template-result-definition-edit.component.html',
   styleUrls: ['./study-template-result-definition-edit.component.scss'],
+  providers: [
+    {
+      provide: I18NEXT_NAMESPACE,
+      useValue: 'subject',
+    },
+  ],
 })
 export class StudyTemplateResultDefinitionEditComponent
   extends AeBaseComponent

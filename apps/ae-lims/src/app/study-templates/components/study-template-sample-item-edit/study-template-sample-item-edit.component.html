@@ -1,10 +1,10 @@
 <div class="m-5 pl-2 pr-2">
-  <div class="mb-2">Анализируемый образец</div>
+  <div class="mb-2">{{'analyzedSample'|i18next}}</div>
   <div class="p-inputgroup w-30rem">
     <input type="text" pInputText [readonly]=true [value]=viewModel.specimenName>
     <button type="button" pButton icon="ae-icon-ellipsis" (click)="selectSpecimen()"></button>
   </div>
-  <div class="mt-4 mb-2">Eдиница измерения</div>
+  <div class="mt-4 mb-2">{{'common:unit'|i18next}}</div>
   <div class="p-inputgroup w-30rem">
     <input type="text" pInputText [readonly]=true [value]=viewModel.unitName>
     <button type="button" pButton icon="ae-icon-ellipsis" (click)="selectUnit()"></button>
@@ -13,13 +13,13 @@
     <div>
       <div class="field col-12 md:col-3">
         <!--suppress XmlInvalidId -->
-        <label for="minVolume">Минимальное значение</label>
+        <label for="minVolume">{{'minValue'|i18next}}</label>
         <p-inputNumber inputId="minVolume" formControlName="minVolume">
         </p-inputNumber>
       </div>
       <div class="field col-12 md:col-3">
         <!--suppress XmlInvalidId -->
-        <label for="maxVolume">Максимальное значение</label>
+        <label for="maxVolume">{{'maxValue'|i18next}}</label>
         <p-inputNumber inputId="maxVolume" formControlName="maxVolume">
         </p-inputNumber>
       </div>

@@ -3,17 +3,17 @@
               [panelSizes]="[30,70]">
     <ng-template pTemplate>
       <div class="p-2">
-        <div class="mt-2 ae-header text-overflow-ellipsis white-space-nowrap overflow-hidden ">Название результата</div>
+        <div class="mt-2 ae-header text-overflow-ellipsis white-space-nowrap overflow-hidden ">{{'nameResult'}}</div>
         <div class="mt-1">{{viewModel.data.name}}</div>
 
-        <div class="mt-2 ae-header text-overflow-ellipsis white-space-nowrap overflow-hidden ">Результат исследования
+        <div class="mt-2 ae-header text-overflow-ellipsis white-space-nowrap overflow-hidden ">{{'menu:resultResearch'|i18next}}
         </div>
         <div class="mt-1">{{viewModel.data.parameter.name}}</div>
 
-        <div class="mt-2 ae-header text-overflow-ellipsis white-space-nowrap overflow-hidden ">Объект</div>
+        <div class="mt-2 ae-header text-overflow-ellipsis white-space-nowrap overflow-hidden ">{{'object'|i18next}}</div>
         <div class="mt-1">{{viewModel.data.specimen.name}}</div>
 
-        <div class="mt-2 ae-header text-overflow-ellipsis white-space-nowrap overflow-hidden ">Eдиница измерения</div>
+        <div class="mt-2 ae-header text-overflow-ellipsis white-space-nowrap overflow-hidden ">{{'common:unit'| i18next}}</div>
         <div class="mt-1">{{viewModel.data.unit.name}}</div>
 
       </div>

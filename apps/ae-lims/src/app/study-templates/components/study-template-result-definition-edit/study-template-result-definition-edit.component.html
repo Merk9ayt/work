@@ -6,12 +6,12 @@
         <form class="" [formGroup]="viewModel.dataForm">
           <div class="p-float-label mt-4">
             <input class="w-full" id="name-input" type="text" pInputText formControlName="name">
-            <label for="name-input">{{'name' | i18next }}</label>
+            <label for="name-input">{{'common:name' | i18next }}</label>
           </div>
           <div class="p-float-label mt-4 ">
             <textarea id="description-input" rows="5" class="ae-textarea-fixed-w-max" pInputTextarea
                       formControlName="description"></textarea>
-            <label for="description-input">{{'description' | i18next }}</label>
+            <label for="description-input">{{'common:description' | i18next }}</label>
 
           </div>
         </form>
@@ -31,7 +31,7 @@
         </div>
 
         <div class="mt-2">
-          <div>{{'unit' | i18next }}</div>
+          <div>{{'common:unit' | i18next }}</div>
           <div class="p-inputgroup ">
             <input type="text" pInputText [readonly]=true [value]=viewModel.unitName>
             <button type="button" pButton icon="ae-icon-ellipsis" (click)="selectUnit()"></button>

@@ -1,10 +1,10 @@
 <div class="m-2 pl-2 pr-2">
-  <div class="mb-2">Метрология</div>
+  <div class="mb-2">{{'metrology'|i18next}}</div>
   <div class="p-inputgroup">
     <input type="text" pInputText [readonly]=true [value]=viewModel.precisionName>
     <button type="button" pButton icon="ae-icon-ellipsis" (click)="selectPrecision()"></button>
   </div>
-  <div class="mt-4 mb-2">Eдиница измерения</div>
+  <div class="mt-4 mb-2">{{'unit'|i18next}}</div>
   <div class="p-inputgroup">
     <input type="text" pInputText [readonly]=true [value]=viewModel.unit>
     <button type="button" pButton icon="ae-icon-ellipsis" (click)="selectUnit()"></button>
@@ -13,19 +13,19 @@
     <div>
       <div class="field">
         <!--suppress XmlInvalidId -->
-        <label for="minValue">Минимальное значение результата</label>
+        <label for="minValue">{{'minValueResult'|i18next}}</label>
         <p-inputNumber class="ae-input-w-full" inputId="minValue" formControlName="minResultValue">
         </p-inputNumber>
       </div>
       <div class="field">
         <!--suppress XmlInvalidId -->
-        <label for="maxValue">Максимальное значение результата</label>
+        <label for="maxValue">{{'maxValueResult'|i18next}}</label>
         <p-inputNumber class="ae-input-w-full" inputId="maxValue" formControlName="maxResultValue">
         </p-inputNumber>
       </div>
       <div class="field">
         <!--suppress XmlInvalidId -->
-        <label for="value">Значение</label>
+        <label for="value">{{'value'|i18next}}</label>
         <p-inputNumber class="ae-input-w-full" inputId="value" formControlName="precisionValue">
         </p-inputNumber>
       </div>

@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import {I18NEXT_NAMESPACE} from "angular-i18next";
 import {
   DialogService,
   DynamicDialogConfig,
@@ -11,6 +12,12 @@ import { StudyTemplateResultPrecisionItemViewModel } from '../../view-models/stu
   selector: 'ae-lims-study-result-precision-edit',
   templateUrl: './study-template-result-precision-edit.component.html',
   styleUrls: ['./study-template-result-precision-edit.component.scss'],
+  providers: [
+    {
+      provide: I18NEXT_NAMESPACE,
+      useValue: 'lims',
+    },
+  ],
 })
 export class StudyTemplateResultPrecisionEditComponent
   extends AeBaseComponent

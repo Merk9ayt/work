@@ -10,7 +10,7 @@ import { StudyTemplateResultDefinitionViewModel } from '../../view-models/study-
   providers: [
     {
       provide: I18NEXT_NAMESPACE,
-      useValue: 'lims.study-templates',
+      useValue: 'lims',
     },
   ],
 })

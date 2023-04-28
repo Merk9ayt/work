@@ -4,6 +4,7 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
+import {I18NEXT_NAMESPACE} from "angular-i18next";
 import {
   DialogService,
   DynamicDialogConfig,
@@ -17,6 +18,12 @@ import { StudyTemplateSampleViewModel } from '../../view-models/study-template-s
   templateUrl: './study-template-sample-item-edit.component.html',
   styleUrls: ['./study-template-sample-item-edit.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: I18NEXT_NAMESPACE,
+      useValue: 'lims',
+    },
+  ],
 })
 export class StudyTemplateSampleItemEditComponent
   extends AeBaseComponent

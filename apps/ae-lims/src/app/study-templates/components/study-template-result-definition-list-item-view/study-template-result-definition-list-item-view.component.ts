@@ -54,7 +54,7 @@ export class StudyTemplateResultDefinitionListItemViewComponent extends AeBaseCo
       StudyTemplateResultDefinitionEditComponent,
       {
         data: this.viewModel,
-        header: 'Редактирование результата',
+        header: this.i18NextService.t('editResult'),
         width: '70%',
         height: '80%',
       }
@@ -74,7 +74,7 @@ export class StudyTemplateResultDefinitionListItemViewComponent extends AeBaseCo
       StudyTemplateResultDefinitionViewComponent,
       {
         data: this.viewModel,
-        header: 'Просмотр результата',
+        header: this.i18NextService.t('watchResult'),
         width: '70%',
         height: '80%',
       }

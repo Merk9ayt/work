@@ -14,5 +14,13 @@
   "description": "Description",
   "home": "Home",
   "unit": "Unit",
-  "defaultValue": "Default value"
+  "defaultValue": "Default value",
+  "basic": "Basic",
+  "parameters": "Parameters",
+  "samples": "Samples",
+  "results": "Results",
+  "research": "Research",
+  "equipment": "Equipment",
+  "materials": "Materials",
+  "version": "Version"
 }
